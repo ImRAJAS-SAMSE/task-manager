@@ -332,35 +332,6 @@ public function updateEvent(Request $request, $id)
     }
 }
 
-
-/*
-    public function deleteEvent($eventId)
-    {
-        $accessToken = $this->getAccessToken();
-        $this->client->setAccessToken($accessToken);
-
-        if ($this->client->isAccessTokenExpired()) {
-            $refreshTokenSaved = $this->client->getRefreshToken();
-            $this->client->fetchAccessTokenWithRefreshToken($refreshTokenSaved);
-            $accessToken = $this->client->getAccessToken();
-            $accessToken['refresh_token'] = $refreshTokenSaved;
-            Storage::disk('local')->put('google/token.json', json_encode($accessToken));
-        }
-
-        $service = new GoogleCalendar($this->client);
-
-        try {
-            $service->events->delete('primary', $eventId);
-            return redirect()->route('google.listEvents')->with('success', 'Event deleted successfully.');
-        } catch (GoogleServiceException $e) {
-            return redirect()->route('google.listEvents')->with('error', 'Failed to delete event: ' . $e->getMessage());
-        }
-
-
-        
-    }
-*/  
-
 public function deleteEvent($eventId)
 {
     $accessToken = $this->getAccessToken();
